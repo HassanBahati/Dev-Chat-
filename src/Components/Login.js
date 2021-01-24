@@ -5,7 +5,7 @@ import firebase from "../Firebase";
 
 function Login() {
     const history = useHistory();
-    const [creds, setCreds] = useState({ nickname = '' });
+    const [creds, setCreds] = useState({ nickname: '' });
     const [showLoading, setShowLoading] = useState(false);
     const ref = firebase.database().ref('users/');
 
@@ -32,17 +32,20 @@ function Login() {
         });
     };
 
-    return(
+    return (
         <div>
-            { showLoading && <Spinner color='primary' /> }
-            
+            {showLoading &&
+                <Spinner color="primary" />
+            }
             <Jumbotron>
                 <Form onSubmit={login}>
                     <FormGroup>
-                        <Label>nickname</Label>
-                        <Input type='text' name='nickname' id='nickname' placeholder='Enter your nickname' />
+                        <Label>Nickname</Label>
+                        <Input type="text" name="nickname" id="nickname" placeholder="Enter Your Nickname" value={creds.nickname} onChange={onChange} />
                     </FormGroup>
-                        <Button variant='primary' type='submit'>Login</Button>
+                    <Button variant="primary" type="submit">
+                        Login
+                    </Button>
                 </Form>
             </Jumbotron>
         </div>
